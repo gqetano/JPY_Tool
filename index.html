@@ -1,0 +1,2024 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Logo Blob Tool — Grana</title>
+<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{box-sizing:border-box;width:100%;height:100%;margin:0;overflow:hidden}body{padding:0;background:inherit}iframe{display:block;width:100%;max-width:none;height:100dvh;margin:0;border:0}</style>
+</head>
+<body>
+<iframe sandbox="allow-scripts allow-downloads allow-same-origin" referrerpolicy="no-referrer" title="Logo Blob Tool — Grana" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;it&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
+&lt;title&gt;Logo Blob Tool — Grana&lt;/title&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(--background) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: light-dark(rgb(255 255 255), rgb(24 24 24));
+  --foreground: light-dark(rgb(26 28 31), rgb(255 255 255));
+  --card: color-mix(in oklab, var(--foreground) 5%, transparent);
+  --card-foreground: var(--foreground);
+  --popover: light-dark(rgb(255 255 255), rgb(45 45 45));
+  --popover-foreground: var(--foreground);
+  --primary: light-dark(rgb(51 156 255), rgb(131 195 255));
+  --primary-foreground: light-dark(rgb(255 255 255), rgb(13 13 13));
+  --secondary: light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%));
+  --secondary-foreground: var(--foreground);
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: light-dark(
+    rgb(26 28 31 / 49.4%),
+    rgb(255 255 255 / 49.8%)
+  );
+  --accent: light-dark(rgb(229 242 255), rgb(13 39 63));
+  --accent-foreground: var(--primary);
+  --destructive: light-dark(rgb(226 85 7), rgb(255 133 73));
+  --border: light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%));
+  --input: light-dark(
+    rgb(26 28 31 / 11.8%),
+    color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+  );
+  --ring: light-dark(rgb(51 156 255), rgb(131 195 255 / 76%));
+  --font-size-base: 14px;
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --radius: 12.5px;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+  --color-background-primary: var(--background);
+  --color-text-primary: var(--foreground);
+  --color-border-secondary: var(--border);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  margin: 0;
+  padding: 5px;
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--viz-font-weight-medium);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive &gt; .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align=&quot;right&quot;]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align=&quot;center&quot;]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: superellipse(1.5);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: superellipse(1.5);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+    [aria-pressed=&quot;true&quot;],
+    [aria-selected=&quot;true&quot;],
+    .is-selected
+  ) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;logo-layer-lab&quot;&gt;
+  &lt;style&gt;
+    #logo-layer-lab {
+      color: var(--foreground);
+      width: 100%;
+      height: 100dvh;
+      overflow: hidden;
+      box-sizing: border-box;
+      padding: clamp(10px, 1.2vw, 18px);
+      --font-size-base: clamp(11px, 1.55vh, 14px);
+    }
+    #logo-layer-lab .lab-layout {
+      display: grid;
+      grid-template-columns: minmax(200px, min(23vw, 250px)) minmax(0, 1fr);
+      gap: clamp(8px, 1.4vw, 20px);
+      align-items: stretch;
+      height: 100%;
+      min-height: 0;
+    }
+    #logo-layer-lab .lab-controls,
+    #logo-layer-lab .control-group,
+    #logo-layer-lab .layer-list,
+    #logo-layer-lab .palette-list {
+      display: grid;
+      gap: clamp(3px, 0.6vh, 8px);
+    }
+    #logo-layer-lab .lab-controls {
+      align-content: start;
+      min-height: 0;
+      overflow: hidden;
+      width: 93.914%;
+      height: 93.914%;
+      transform: scale(1.0648);
+      transform-origin: top left;
+    }
+    #logo-layer-lab [hidden] {
+      display: none !important;
+    }
+    #logo-layer-lab .control-heading,
+    #logo-layer-lab .range-heading,
+    #logo-layer-lab .layer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    #logo-layer-lab .control-heading,
+    #logo-layer-lab .range-heading {
+      font-weight: 500;
+    }
+    #logo-layer-lab .range-value {
+      color: var(--muted-foreground);
+      font-variant-numeric: tabular-nums;
+    }
+    #logo-layer-lab .layer-row {
+      min-width: 0;
+      position: relative;
+      cursor: grab;
+    }
+    #logo-layer-lab .layer-select {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+    #logo-layer-lab .layer-swatch,
+    #logo-layer-lab .saved-swatch {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      flex: 0 0 auto;
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--foreground) 28%, transparent);
+    }
+    #logo-layer-lab .layer-copy {
+      display: inline-flex;
+      align-items: flex-start;
+      min-width: 0;
+    }
+    #logo-layer-lab .layer-select[aria-pressed=&quot;true&quot;] {
+      background: rgb(214 214 214);
+      color: rgb(26 28 31);
+      border-color: rgb(214 214 214);
+      box-shadow: none;
+    }
+    #logo-layer-lab .layer-handle {
+      color: var(--muted-foreground);
+      cursor: grab;
+      flex: 0 0 auto;
+      user-select: none;
+    }
+    #logo-layer-lab .layer-row.is-dragging {
+      opacity: 0.32;
+    }
+    #logo-layer-lab .layer-row.drop-before::before,
+    #logo-layer-lab .layer-row.drop-after::after {
+      content: &#x27;&#x27;;
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      right: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--foreground) 50%, transparent);
+      pointer-events: none;
+    }
+    #logo-layer-lab .layer-row.drop-before::before {
+      top: -6px;
+    }
+    #logo-layer-lab .layer-row.drop-after::after {
+      bottom: -6px;
+    }
+    #logo-layer-lab .layer-drag-preview {
+      position: absolute;
+      top: -1000px;
+      left: -1000px;
+      width: 280px;
+      opacity: 0.72;
+      filter: blur(0.7px);
+      pointer-events: none;
+    }
+    #logo-layer-lab .palette-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: clamp(3px, 0.55vh, 8px);
+      max-height: 11vh;
+      overflow-y: auto;
+    }
+    #logo-layer-lab .layer-list {
+      max-height: min(23vh, 220px);
+      overflow-y: auto;
+      scrollbar-gutter: stable;
+    }
+    #logo-layer-lab .layer-actions {
+      justify-content: flex-end;
+    }
+    #logo-layer-lab .saved-swatches {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+    }
+    #logo-layer-lab .canvas-card {
+      min-width: 0;
+      min-height: 0;
+      padding: clamp(6px, 1vh, 12px);
+      background: var(--card);
+      color: var(--card-foreground);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    #logo-layer-lab .canvas-wrap {
+      width: min(100%, calc(157.1429dvh - 64px));
+      max-width: 100%;
+      flex: 0 0 auto;
+      aspect-ratio: 11 / 7;
+      overflow: hidden;
+      background-image:
+        linear-gradient(45deg, color-mix(in srgb, var(--muted) 68%, transparent) 25%, transparent 25%),
+        linear-gradient(-45deg, color-mix(in srgb, var(--muted) 68%, transparent) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, color-mix(in srgb, var(--muted) 68%, transparent) 75%),
+        linear-gradient(-45deg, transparent 75%, color-mix(in srgb, var(--muted) 68%, transparent) 75%);
+      background-size: 24px 24px;
+      background-position: 0 0, 0 12px, 12px -12px, -12px 0;
+    }
+    #logo-layer-lab canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    @media (max-height: 720px) and (min-width: 661px) {
+      #logo-layer-lab .lab-controls {
+        width: 103.306%;
+        height: 103.306%;
+        transform: scale(0.968);
+      }
+      #logo-layer-lab .lab-controls,
+      #logo-layer-lab .control-group,
+      #logo-layer-lab .layer-list,
+      #logo-layer-lab .palette-list {
+        gap: clamp(2px, 0.45vh, 6px);
+      }
+    }
+    @media (max-width: 660px) {
+      #logo-layer-lab {
+        height: auto;
+        min-height: 100dvh;
+        overflow: visible;
+      }
+      #logo-layer-lab .lab-layout {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+      #logo-layer-lab .lab-controls {
+        overflow: visible;
+        width: 100%;
+        height: auto;
+        transform: none;
+      }
+      #logo-layer-lab .layer-list,
+      #logo-layer-lab .palette-list {
+        max-height: none;
+      }
+    }
+  &lt;/style&gt;
+
+  &lt;div class=&quot;lab-layout&quot;&gt;
+    &lt;section class=&quot;lab-controls&quot; aria-label=&quot;Controlli&quot;&gt;
+      &lt;div class=&quot;control-group&quot;&gt;
+        &lt;label class=&quot;sr-only&quot; for=&quot;layer-logo-file&quot;&gt;Scegli un file immagine&lt;/label&gt;
+        &lt;input class=&quot;form-control&quot; id=&quot;layer-logo-file&quot; type=&quot;file&quot; accept=&quot;image/png,image/jpeg,image/webp,image/svg+xml&quot;&gt;
+        &lt;div class=&quot;range-heading&quot;&gt;
+          &lt;label for=&quot;layer-source-size&quot;&gt;Dimensione&lt;/label&gt;
+          &lt;span class=&quot;range-value&quot;&gt;&lt;span id=&quot;layer-source-size-value&quot;&gt;100&lt;/span&gt;%&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;input class=&quot;form-range&quot; id=&quot;layer-source-size&quot; type=&quot;range&quot; min=&quot;25&quot; max=&quot;100&quot; value=&quot;100&quot; step=&quot;1&quot;&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;control-group&quot;&gt;
+        &lt;div class=&quot;control-heading&quot;&gt;
+          &lt;span&gt;Effetto globale&lt;/span&gt;
+          &lt;div class=&quot;form-check form-switch&quot;&gt;
+            &lt;input class=&quot;form-check-input&quot; id=&quot;layer-effect-enabled&quot; type=&quot;checkbox&quot; checked&gt;
+            &lt;label class=&quot;form-check-label&quot; for=&quot;layer-effect-enabled&quot;&gt;&lt;span class=&quot;sr-only&quot;&gt;Attiva o disattiva l’effetto&lt;/span&gt;&lt;/label&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;control-group&quot;&gt;
+        &lt;div class=&quot;control-heading&quot;&gt;
+          &lt;span&gt;Sfondo&lt;/span&gt;
+          &lt;div class=&quot;viz-row&quot;&gt;
+            &lt;div class=&quot;form-check form-switch&quot;&gt;
+              &lt;input class=&quot;form-check-input&quot; id=&quot;layer-background-enabled&quot; type=&quot;checkbox&quot;&gt;
+              &lt;label class=&quot;form-check-label&quot; for=&quot;layer-background-enabled&quot;&gt;&lt;span class=&quot;sr-only&quot;&gt;Attiva o disattiva lo sfondo&lt;/span&gt;&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;label class=&quot;form-label&quot; for=&quot;layer-background-color&quot;&gt;
+              &lt;span class=&quot;sr-only&quot;&gt;Colore dello sfondo&lt;/span&gt;
+              &lt;input class=&quot;form-control form-control-color&quot; id=&quot;layer-background-color&quot; type=&quot;color&quot; value=&quot;#ffffff&quot; disabled&gt;
+            &lt;/label&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;control-group&quot; id=&quot;layer-grain-controls&quot;&gt;
+        &lt;div class=&quot;control-heading&quot;&gt;
+          &lt;span&gt;Grana&lt;/span&gt;
+          &lt;div class=&quot;viz-row&quot;&gt;
+            &lt;span class=&quot;range-value&quot; id=&quot;layer-grain-value&quot;&gt;10&lt;/span&gt;
+            &lt;div class=&quot;form-check form-switch&quot;&gt;
+              &lt;input class=&quot;form-check-input&quot; id=&quot;layer-texture-enabled&quot; type=&quot;checkbox&quot; checked&gt;
+              &lt;label class=&quot;form-check-label&quot; for=&quot;layer-texture-enabled&quot;&gt;&lt;span class=&quot;sr-only&quot;&gt;Attiva o disattiva la grana&lt;/span&gt;&lt;/label&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;label class=&quot;sr-only&quot; for=&quot;layer-grain&quot;&gt;Quantità di grana&lt;/label&gt;
+        &lt;input class=&quot;form-range&quot; id=&quot;layer-grain&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;10&quot; step=&quot;1&quot;&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;control-group&quot;&gt;
+        &lt;div class=&quot;control-heading&quot;&gt;
+          &lt;span&gt;Livelli&lt;/span&gt;
+          &lt;button class=&quot;btn&quot; id=&quot;layer-add&quot; type=&quot;button&quot;&gt;Aggiungi livello&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;layer-list&quot; id=&quot;layer-list&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;control-group&quot; id=&quot;layer-editor&quot;&gt;
+        &lt;div class=&quot;viz-row layer-actions&quot;&gt;
+          &lt;button class=&quot;btn btn-ghost&quot; id=&quot;layer-duplicate&quot; type=&quot;button&quot;&gt;Duplica&lt;/button&gt;
+          &lt;button class=&quot;btn btn-ghost&quot; id=&quot;layer-delete&quot; type=&quot;button&quot;&gt;Elimina&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;label class=&quot;form-label&quot; for=&quot;layer-color&quot;&gt;Colore
+          &lt;input class=&quot;form-control form-control-color&quot; id=&quot;layer-color&quot; type=&quot;color&quot; value=&quot;#19f400&quot;&gt;
+        &lt;/label&gt;
+
+        &lt;div class=&quot;control-group&quot;&gt;
+          &lt;div class=&quot;range-heading&quot;&gt;
+            &lt;label for=&quot;layer-blur&quot;&gt;Morbidezza&lt;/label&gt;
+            &lt;span class=&quot;range-value&quot;&gt;&lt;span id=&quot;layer-blur-value&quot;&gt;8&lt;/span&gt; px&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;input class=&quot;form-range&quot; id=&quot;layer-blur&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;70&quot; value=&quot;8&quot; step=&quot;1&quot;&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;control-group&quot;&gt;
+          &lt;div class=&quot;range-heading&quot;&gt;
+            &lt;label for=&quot;layer-threshold&quot;&gt;Espansione&lt;/label&gt;
+            &lt;span class=&quot;range-value&quot; id=&quot;layer-threshold-value&quot;&gt;66&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;input class=&quot;form-range&quot; id=&quot;layer-threshold&quot; type=&quot;range&quot; min=&quot;1&quot; max=&quot;255&quot; value=&quot;66&quot; step=&quot;1&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;control-group&quot;&gt;
+        &lt;div class=&quot;control-heading&quot;&gt;
+          &lt;span&gt;Palette&lt;/span&gt;
+          &lt;div class=&quot;viz-row&quot;&gt;
+            &lt;button class=&quot;btn&quot; id=&quot;layer-random-palette&quot; type=&quot;button&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;🎲&lt;/span&gt; Genera&lt;/button&gt;
+            &lt;button class=&quot;btn btn-primary&quot; id=&quot;layer-save-palette&quot; type=&quot;button&quot;&gt;Salva&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;palette-list&quot; id=&quot;layer-saved-palettes&quot; hidden&gt;&lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;button class=&quot;btn btn-primary btn-block&quot; id=&quot;layer-download&quot; type=&quot;button&quot;&gt;Scarica PNG HD&lt;/button&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;card canvas-card&quot; aria-label=&quot;Anteprima del logo elaborato&quot;&gt;
+      &lt;div class=&quot;canvas-wrap&quot;&gt;
+        &lt;canvas id=&quot;layer-canvas&quot; width=&quot;1100&quot; height=&quot;700&quot; role=&quot;img&quot; aria-label=&quot;Composizione del logo generata con livelli indipendenti di morbidezza ed espansione&quot;&gt;&lt;/canvas&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    (() =&gt; {
+      const root = document.getElementById(&#x27;logo-layer-lab&#x27;);
+      const canvas = root.querySelector(&#x27;#layer-canvas&#x27;);
+      const output = canvas.getContext(&#x27;2d&#x27;, { willReadFrequently: true });
+      const fileInput = root.querySelector(&#x27;#layer-logo-file&#x27;);
+      const sourceSizeInput = root.querySelector(&#x27;#layer-source-size&#x27;);
+      const sourceSizeValue = root.querySelector(&#x27;#layer-source-size-value&#x27;);
+      const effectToggle = root.querySelector(&#x27;#layer-effect-enabled&#x27;);
+      const backgroundToggle = root.querySelector(&#x27;#layer-background-enabled&#x27;);
+      const backgroundColorInput = root.querySelector(&#x27;#layer-background-color&#x27;);
+      const textureToggle = root.querySelector(&#x27;#layer-texture-enabled&#x27;);
+      const grainControls = root.querySelector(&#x27;#layer-grain-controls&#x27;);
+      const grainInput = root.querySelector(&#x27;#layer-grain&#x27;);
+      const grainValue = root.querySelector(&#x27;#layer-grain-value&#x27;);
+      const layerList = root.querySelector(&#x27;#layer-list&#x27;);
+      const addButton = root.querySelector(&#x27;#layer-add&#x27;);
+      const duplicateButton = root.querySelector(&#x27;#layer-duplicate&#x27;);
+      const deleteButton = root.querySelector(&#x27;#layer-delete&#x27;);
+      const colorInput = root.querySelector(&#x27;#layer-color&#x27;);
+      const blurInput = root.querySelector(&#x27;#layer-blur&#x27;);
+      const blurValue = root.querySelector(&#x27;#layer-blur-value&#x27;);
+      const thresholdInput = root.querySelector(&#x27;#layer-threshold&#x27;);
+      const thresholdValue = root.querySelector(&#x27;#layer-threshold-value&#x27;);
+      const randomPaletteButton = root.querySelector(&#x27;#layer-random-palette&#x27;);
+      const savePaletteButton = root.querySelector(&#x27;#layer-save-palette&#x27;);
+      const savedPalettesList = root.querySelector(&#x27;#layer-saved-palettes&#x27;);
+      const downloadButton = root.querySelector(&#x27;#layer-download&#x27;);
+
+      const canvasWidth = canvas.width;
+      const canvasHeight = canvas.height;
+      const maxLayers = 12;
+      const defaultColors = [&#x27;#19f400&#x27;, &#x27;#0878ff&#x27;, &#x27;#050505&#x27;, &#x27;#ff00dc&#x27;, &#x27;#ffd600&#x27;, &#x27;#8a2be2&#x27;, &#x27;#00d4ff&#x27;, &#x27;#ff5a36&#x27;];
+      const paletteStorageKey = &#x27;logo-layer-palettes-v2&#x27;;
+      let nextLayerId = 5;
+      let layers = [
+        { id: 1, color: &#x27;#19f400&#x27;, blur: 8, threshold: 190 },
+        { id: 2, color: &#x27;#0878ff&#x27;, blur: 16, threshold: 135 },
+        { id: 3, color: &#x27;#050505&#x27;, blur: 24, threshold: 80 },
+        { id: 4, color: &#x27;#ff00dc&#x27;, blur: 34, threshold: 30 }
+      ];
+      let selectedLayerId = 1;
+      let savedPalettes = [];
+      let sourceFileName = &#x27;logo-cliente&#x27;;
+      let sourceImage = new Image();
+      let sourceSizePercent = 100;
+      let sourceMaskReady = false;
+      let scheduledFrame = null;
+      let scheduledMaskFrame = null;
+      let draggedLayerId = null;
+      let dropInsertionIndex = null;
+      const textureNoise = new Uint8Array(canvasWidth * canvasHeight);
+      let textureNoiseState = 0x9e3779b9;
+      for (let index = 0; index &lt; textureNoise.length; index += 1) {
+        textureNoiseState ^= textureNoiseState &lt;&lt; 13;
+        textureNoiseState ^= textureNoiseState &gt;&gt;&gt; 17;
+        textureNoiseState ^= textureNoiseState &lt;&lt; 5;
+        textureNoise[index] = textureNoiseState &amp; 255;
+      }
+
+      const rawCanvas = document.createElement(&#x27;canvas&#x27;);
+      const raw = rawCanvas.getContext(&#x27;2d&#x27;, { willReadFrequently: true });
+      const maskCanvas = document.createElement(&#x27;canvas&#x27;);
+      const mask = maskCanvas.getContext(&#x27;2d&#x27;, { willReadFrequently: true });
+      const blurCanvas = document.createElement(&#x27;canvas&#x27;);
+      const blurred = blurCanvas.getContext(&#x27;2d&#x27;, { willReadFrequently: true });
+      [rawCanvas, maskCanvas, blurCanvas].forEach((item) =&gt; {
+        item.width = canvasWidth;
+        item.height = canvasHeight;
+      });
+
+      function selectedLayer() {
+        return layers.find((layer) =&gt; layer.id === selectedLayerId) || layers[0];
+      }
+
+      function hexToRgb(hex) {
+        const value = parseInt(hex.slice(1), 16);
+        return [(value &gt;&gt; 16) &amp; 255, (value &gt;&gt; 8) &amp; 255, value &amp; 255];
+      }
+
+      function thresholdToExpansion(threshold) {
+        return 256 - threshold;
+      }
+
+      function expansionToThreshold(expansion) {
+        return 256 - expansion;
+      }
+
+      function paintSolidLogo(target, maskContext, width, height) {
+        const result = target.createImageData(width, height);
+        const maskData = maskContext.getImageData(0, 0, width, height).data;
+        const logoRgb = hexToRgb(layers[0].color);
+        const backgroundEnabled = backgroundToggle.checked;
+        const backgroundRgb = hexToRgb(backgroundColorInput.value);
+        for (let sourceIndex = 0, dataIndex = 0; sourceIndex &lt; maskData.length; sourceIndex += 4, dataIndex += 4) {
+          const coverage = maskData[sourceIndex] / 255;
+          if (backgroundEnabled) {
+            result.data[dataIndex] = Math.round(logoRgb[0] * coverage + backgroundRgb[0] * (1 - coverage));
+            result.data[dataIndex + 1] = Math.round(logoRgb[1] * coverage + backgroundRgb[1] * (1 - coverage));
+            result.data[dataIndex + 2] = Math.round(logoRgb[2] * coverage + backgroundRgb[2] * (1 - coverage));
+            result.data[dataIndex + 3] = 255;
+          } else if (coverage &gt; 0) {
+            result.data[dataIndex] = logoRgb[0];
+            result.data[dataIndex + 1] = logoRgb[1];
+            result.data[dataIndex + 2] = logoRgb[2];
+            result.data[dataIndex + 3] = maskData[sourceIndex];
+          }
+        }
+        target.putImageData(result, 0, 0);
+      }
+
+      function textureNoiseForSize(width, height) {
+        if (width === canvasWidth &amp;&amp; height === canvasHeight) return textureNoise;
+        const scaledNoise = new Uint8Array(width * height);
+        for (let y = 0; y &lt; height; y += 1) {
+          const sourceY = Math.min(canvasHeight - 1, Math.floor(y * canvasHeight / height));
+          const sourceRow = sourceY * canvasWidth;
+          const targetRow = y * width;
+          for (let x = 0; x &lt; width; x += 1) {
+            const sourceX = Math.min(canvasWidth - 1, Math.floor(x * canvasWidth / width));
+            scaledNoise[targetRow + x] = textureNoise[sourceRow + sourceX];
+          }
+        }
+        return scaledNoise;
+      }
+
+      function applyGrain(imageData, noise, amount) {
+        if (amount &lt;= 0) return;
+        const amplitude = amount * 1.15;
+        for (let pixel = 0, dataIndex = 0; pixel &lt; noise.length; pixel += 1, dataIndex += 4) {
+          if (imageData.data[dataIndex + 3] === 0) continue;
+          const grain = ((((noise[pixel] * 73) + 41) &amp; 255) / 255 - 0.5) * amplitude;
+          imageData.data[dataIndex] = Math.max(0, Math.min(255, Math.round(imageData.data[dataIndex] + grain)));
+          imageData.data[dataIndex + 1] = Math.max(0, Math.min(255, Math.round(imageData.data[dataIndex + 1] + grain)));
+          imageData.data[dataIndex + 2] = Math.max(0, Math.min(255, Math.round(imageData.data[dataIndex + 2] + grain)));
+        }
+      }
+
+      function hslToHex(hue, saturation, lightness) {
+        const s = saturation / 100;
+        const l = lightness / 100;
+        const chroma = (1 - Math.abs(2 * l - 1)) * s;
+        const section = hue / 60;
+        const intermediate = chroma * (1 - Math.abs((section % 2) - 1));
+        let red = 0;
+        let green = 0;
+        let blue = 0;
+        if (section &lt; 1) [red, green, blue] = [chroma, intermediate, 0];
+        else if (section &lt; 2) [red, green, blue] = [intermediate, chroma, 0];
+        else if (section &lt; 3) [red, green, blue] = [0, chroma, intermediate];
+        else if (section &lt; 4) [red, green, blue] = [0, intermediate, chroma];
+        else if (section &lt; 5) [red, green, blue] = [intermediate, 0, chroma];
+        else [red, green, blue] = [chroma, 0, intermediate];
+        const match = l - chroma / 2;
+        return `#${[red, green, blue].map((channel) =&gt; Math.round((channel + match) * 255).toString(16).padStart(2, &#x27;0&#x27;)).join(&#x27;&#x27;)}`;
+      }
+
+      function scheduleRender() {
+        if (scheduledFrame !== null) cancelAnimationFrame(scheduledFrame);
+        scheduledFrame = requestAnimationFrame(() =&gt; {
+          scheduledFrame = null;
+          renderNow();
+        });
+      }
+
+      function scheduleSourceMask() {
+        if (scheduledMaskFrame !== null) cancelAnimationFrame(scheduledMaskFrame);
+        scheduledMaskFrame = requestAnimationFrame(() =&gt; {
+          scheduledMaskFrame = null;
+          prepareSourceMask();
+        });
+      }
+
+      function prepareSourceMask() {
+        if (!sourceImage.naturalWidth || !sourceImage.naturalHeight) return;
+        const padding = 86;
+        const availableWidth = canvasWidth - padding * 2;
+        const availableHeight = canvasHeight - padding * 2;
+        const scale = Math.min(availableWidth / sourceImage.naturalWidth, availableHeight / sourceImage.naturalHeight) * (sourceSizePercent / 100);
+        const drawWidth = sourceImage.naturalWidth * scale;
+        const drawHeight = sourceImage.naturalHeight * scale;
+        const drawX = (canvasWidth - drawWidth) / 2;
+        const drawY = (canvasHeight - drawHeight) / 2;
+
+        raw.clearRect(0, 0, canvasWidth, canvasHeight);
+        raw.drawImage(sourceImage, drawX, drawY, drawWidth, drawHeight);
+        const sourcePixels = raw.getImageData(0, 0, canvasWidth, canvasHeight);
+        let transparentCount = 0;
+        for (let index = 3; index &lt; sourcePixels.data.length; index += 4) {
+          if (sourcePixels.data[index] &lt; 245) transparentCount += 1;
+        }
+        const useAlpha = transparentCount &gt; canvasWidth * canvasHeight * 0.01;
+        const maskPixels = mask.createImageData(canvasWidth, canvasHeight);
+        for (let index = 0; index &lt; sourcePixels.data.length; index += 4) {
+          const alpha = sourcePixels.data[index + 3];
+          const luminance = sourcePixels.data[index] * 0.2126 + sourcePixels.data[index + 1] * 0.7152 + sourcePixels.data[index + 2] * 0.0722;
+          const value = useAlpha ? alpha : Math.round((255 - luminance) * (alpha / 255));
+          maskPixels.data[index] = value;
+          maskPixels.data[index + 1] = value;
+          maskPixels.data[index + 2] = value;
+          maskPixels.data[index + 3] = 255;
+        }
+        mask.putImageData(maskPixels, 0, 0);
+        sourceMaskReady = true;
+        scheduleRender();
+      }
+
+      function intensityForBlur(amount, cache) {
+        if (cache.has(amount)) return cache.get(amount);
+        blurred.clearRect(0, 0, canvasWidth, canvasHeight);
+        blurred.save();
+        blurred.filter = `blur(${amount}px)`;
+        blurred.drawImage(maskCanvas, 0, 0);
+        blurred.restore();
+        const image = blurred.getImageData(0, 0, canvasWidth, canvasHeight).data;
+        const intensity = new Uint8Array(canvasWidth * canvasHeight);
+        for (let pixel = 0, sourceIndex = 0; pixel &lt; intensity.length; pixel += 1, sourceIndex += 4) {
+          intensity[pixel] = image[sourceIndex];
+        }
+        cache.set(amount, intensity);
+        return intensity;
+      }
+
+      function renderNow() {
+        if (!sourceMaskReady) return;
+        if (!effectToggle.checked) {
+          paintSolidLogo(output, mask, canvasWidth, canvasHeight);
+          return;
+        }
+        const result = output.createImageData(canvasWidth, canvasHeight);
+        const backgroundEnabled = backgroundToggle.checked;
+        const backgroundRgb = hexToRgb(backgroundColorInput.value);
+        const textureEnabled = textureToggle.checked;
+        if (backgroundEnabled) {
+          for (let index = 0; index &lt; result.data.length; index += 4) {
+            result.data[index] = backgroundRgb[0];
+            result.data[index + 1] = backgroundRgb[1];
+            result.data[index + 2] = backgroundRgb[2];
+            result.data[index + 3] = 255;
+          }
+        }
+
+        const cache = new Map();
+        for (let layerIndex = layers.length - 1; layerIndex &gt;= 0; layerIndex -= 1) {
+          const layer = layers[layerIndex];
+          const intensity = intensityForBlur(layer.blur, cache);
+          const rgb = hexToRgb(layer.color);
+          for (let pixel = 0, dataIndex = 0; pixel &lt; intensity.length; pixel += 1, dataIndex += 4) {
+            if (intensity[pixel] &lt; layer.threshold) continue;
+            result.data[dataIndex] = rgb[0];
+            result.data[dataIndex + 1] = rgb[1];
+            result.data[dataIndex + 2] = rgb[2];
+            result.data[dataIndex + 3] = 255;
+          }
+        }
+        if (textureEnabled) applyGrain(result, textureNoise, Number(grainInput.value));
+        output.putImageData(result, 0, 0);
+      }
+
+      function buildHighResolutionExport() {
+        const exportScale = 3;
+        const width = canvasWidth * exportScale;
+        const height = canvasHeight * exportScale;
+        const exportCanvas = document.createElement(&#x27;canvas&#x27;);
+        exportCanvas.width = width;
+        exportCanvas.height = height;
+        const exportOutput = exportCanvas.getContext(&#x27;2d&#x27;, { willReadFrequently: true });
+        const padding = 86 * exportScale;
+        const availableWidth = width - padding * 2;
+        const availableHeight = height - padding * 2;
+        const sourceScale = Math.min(availableWidth / sourceImage.naturalWidth, availableHeight / sourceImage.naturalHeight) * (sourceSizePercent / 100);
+        const drawWidth = sourceImage.naturalWidth * sourceScale;
+        const drawHeight = sourceImage.naturalHeight * sourceScale;
+        const drawX = (width - drawWidth) / 2;
+        const drawY = (height - drawHeight) / 2;
+
+        const exportRawCanvas = document.createElement(&#x27;canvas&#x27;);
+        exportRawCanvas.width = width;
+        exportRawCanvas.height = height;
+        const exportRaw = exportRawCanvas.getContext(&#x27;2d&#x27;, { willReadFrequently: true });
+        exportRaw.drawImage(sourceImage, drawX, drawY, drawWidth, drawHeight);
+        let sourcePixels = exportRaw.getImageData(0, 0, width, height);
+        let transparentCount = 0;
+        for (let index = 3; index &lt; sourcePixels.data.length; index += 4) {
+          if (sourcePixels.data[index] &lt; 245) transparentCount += 1;
+        }
+        const useAlpha = transparentCount &gt; width * height * 0.01;
+
+        const exportMaskCanvas = document.createElement(&#x27;canvas&#x27;);
+        exportMaskCanvas.width = width;
+        exportMaskCanvas.height = height;
+        const exportMask = exportMaskCanvas.getContext(&#x27;2d&#x27;, { willReadFrequently: true });
+        let maskPixels = exportMask.createImageData(width, height);
+        for (let index = 0; index &lt; sourcePixels.data.length; index += 4) {
+          const alpha = sourcePixels.data[index + 3];
+          const luminance = sourcePixels.data[index] * 0.2126 + sourcePixels.data[index + 1] * 0.7152 + sourcePixels.data[index + 2] * 0.0722;
+          const value = useAlpha ? alpha : Math.round((255 - luminance) * (alpha / 255));
+          maskPixels.data[index] = value;
+          maskPixels.data[index + 1] = value;
+          maskPixels.data[index + 2] = value;
+          maskPixels.data[index + 3] = 255;
+        }
+        exportMask.putImageData(maskPixels, 0, 0);
+        sourcePixels = null;
+        maskPixels = null;
+
+        if (!effectToggle.checked) {
+          paintSolidLogo(exportOutput, exportMask, width, height);
+          return exportCanvas;
+        }
+
+        const result = exportOutput.createImageData(width, height);
+        const textureEnabled = textureToggle.checked;
+        const exportTextureNoise = textureEnabled ? textureNoiseForSize(width, height) : null;
+        if (backgroundToggle.checked) {
+          const backgroundRgb = hexToRgb(backgroundColorInput.value);
+          for (let index = 0; index &lt; result.data.length; index += 4) {
+            result.data[index] = backgroundRgb[0];
+            result.data[index + 1] = backgroundRgb[1];
+            result.data[index + 2] = backgroundRgb[2];
+            result.data[index + 3] = 255;
+          }
+        }
+
+        const exportBlurCanvas = document.createElement(&#x27;canvas&#x27;);
+        exportBlurCanvas.width = width;
+        exportBlurCanvas.height = height;
+        const exportBlur = exportBlurCanvas.getContext(&#x27;2d&#x27;, { willReadFrequently: true });
+        for (let layerIndex = layers.length - 1; layerIndex &gt;= 0; layerIndex -= 1) {
+          const layer = layers[layerIndex];
+          exportBlur.clearRect(0, 0, width, height);
+          exportBlur.save();
+          exportBlur.filter = `blur(${layer.blur * exportScale}px)`;
+          exportBlur.drawImage(exportMaskCanvas, 0, 0);
+          exportBlur.restore();
+          const intensity = exportBlur.getImageData(0, 0, width, height).data;
+          const rgb = hexToRgb(layer.color);
+          for (let pixel = 0, sourceIndex = 0, dataIndex = 0; sourceIndex &lt; intensity.length; pixel += 1, sourceIndex += 4, dataIndex += 4) {
+            if (intensity[sourceIndex] &lt; layer.threshold) continue;
+            result.data[dataIndex] = rgb[0];
+            result.data[dataIndex + 1] = rgb[1];
+            result.data[dataIndex + 2] = rgb[2];
+            result.data[dataIndex + 3] = 255;
+          }
+        }
+        if (textureEnabled) applyGrain(result, exportTextureNoise, Number(grainInput.value));
+        exportOutput.putImageData(result, 0, 0);
+        return exportCanvas;
+      }
+
+      function refreshEditor() {
+        const layer = selectedLayer();
+        colorInput.value = layer.color;
+        blurInput.value = String(layer.blur);
+        blurValue.textContent = String(layer.blur);
+        const expansion = thresholdToExpansion(layer.threshold);
+        thresholdInput.value = String(expansion);
+        thresholdValue.textContent = String(expansion);
+        deleteButton.disabled = layers.length === 1;
+        addButton.disabled = layers.length &gt;= maxLayers;
+        duplicateButton.disabled = layers.length &gt;= maxLayers;
+      }
+
+      function clearDropIndicator() {
+        layerList.querySelectorAll(&#x27;.drop-before, .drop-after&#x27;).forEach((row) =&gt; {
+          row.classList.remove(&#x27;drop-before&#x27;, &#x27;drop-after&#x27;);
+        });
+      }
+
+      function finishLayerDrag() {
+        clearDropIndicator();
+        layerList.querySelectorAll(&#x27;.is-dragging&#x27;).forEach((row) =&gt; row.classList.remove(&#x27;is-dragging&#x27;));
+        root.querySelectorAll(&#x27;.layer-drag-preview&#x27;).forEach((preview) =&gt; preview.remove());
+        draggedLayerId = null;
+        dropInsertionIndex = null;
+      }
+
+      function dropLayer() {
+        const fromIndex = layers.findIndex((layer) =&gt; layer.id === draggedLayerId);
+        if (fromIndex &lt; 0 || dropInsertionIndex === null) {
+          finishLayerDrag();
+          return;
+        }
+        let toIndex = dropInsertionIndex;
+        const [moved] = layers.splice(fromIndex, 1);
+        if (toIndex &gt; fromIndex) toIndex -= 1;
+        layers.splice(Math.max(0, Math.min(toIndex, layers.length)), 0, moved);
+        finishLayerDrag();
+        rebuildLayerList();
+        scheduleRender();
+      }
+
+      function rebuildLayerList() {
+        layerList.replaceChildren();
+        layers.forEach((layer, index) =&gt; {
+          const row = document.createElement(&#x27;div&#x27;);
+          row.className = &#x27;layer-row&#x27;;
+          row.dataset.index = String(index);
+          row.draggable = true;
+
+          const handle = document.createElement(&#x27;span&#x27;);
+          handle.className = &#x27;layer-handle&#x27;;
+          handle.textContent = &#x27;⠿&#x27;;
+          handle.setAttribute(&#x27;aria-hidden&#x27;, &#x27;true&#x27;);
+
+          const select = document.createElement(&#x27;button&#x27;);
+          select.className = &#x27;btn btn-block layer-select&#x27;;
+          select.type = &#x27;button&#x27;;
+          select.draggable = true;
+          select.setAttribute(&#x27;aria-pressed&#x27;, String(layer.id === selectedLayerId));
+          const swatch = document.createElement(&#x27;span&#x27;);
+          swatch.className = &#x27;layer-swatch&#x27;;
+          swatch.style.backgroundColor = layer.color;
+          const copy = document.createElement(&#x27;span&#x27;);
+          copy.className = &#x27;layer-copy&#x27;;
+          const name = document.createElement(&#x27;span&#x27;);
+          name.textContent = `Livello ${index + 1}`;
+          copy.append(name);
+          select.append(swatch, copy);
+          select.addEventListener(&#x27;click&#x27;, () =&gt; {
+            selectedLayerId = layer.id;
+            rebuildLayerList();
+          });
+
+          row.addEventListener(&#x27;dragstart&#x27;, (event) =&gt; {
+            draggedLayerId = layer.id;
+            dropInsertionIndex = index;
+            event.dataTransfer.effectAllowed = &#x27;move&#x27;;
+            event.dataTransfer.setData(&#x27;text/plain&#x27;, String(layer.id));
+            const preview = row.cloneNode(true);
+            preview.classList.add(&#x27;layer-drag-preview&#x27;);
+            preview.style.width = `${row.getBoundingClientRect().width}px`;
+            root.append(preview);
+            event.dataTransfer.setDragImage(preview, 28, Math.max(18, preview.getBoundingClientRect().height / 2));
+            requestAnimationFrame(() =&gt; row.classList.add(&#x27;is-dragging&#x27;));
+            setTimeout(() =&gt; preview.remove(), 0);
+          });
+          row.addEventListener(&#x27;dragover&#x27;, (event) =&gt; {
+            if (draggedLayerId === null) return;
+            event.preventDefault();
+            event.dataTransfer.dropEffect = &#x27;move&#x27;;
+            const rect = row.getBoundingClientRect();
+            const placeBefore = event.clientY &lt; rect.top + rect.height / 2;
+            dropInsertionIndex = placeBefore ? index : index + 1;
+            clearDropIndicator();
+            row.classList.add(placeBefore ? &#x27;drop-before&#x27; : &#x27;drop-after&#x27;);
+          });
+          row.addEventListener(&#x27;drop&#x27;, (event) =&gt; {
+            event.preventDefault();
+            dropLayer();
+          });
+          row.addEventListener(&#x27;dragend&#x27;, finishLayerDrag);
+
+          row.append(handle, select);
+          layerList.append(row);
+        });
+        refreshEditor();
+      }
+
+      function loadSavedPalettes() {
+        try {
+          const stored = JSON.parse(sessionStorage.getItem(paletteStorageKey) || &#x27;[]&#x27;);
+          if (Array.isArray(stored)) savedPalettes = stored.filter((palette) =&gt; Array.isArray(palette) &amp;&amp; palette.length &gt; 0);
+        } catch (error) {
+          savedPalettes = [];
+        }
+      }
+
+      function persistSavedPalettes() {
+        try {
+          sessionStorage.setItem(paletteStorageKey, JSON.stringify(savedPalettes));
+        } catch (error) {
+          // La cronologia resta in memoria quando l&#x27;ambiente non consente sessionStorage.
+        }
+      }
+
+      function rebuildSavedPalettes() {
+        savedPalettesList.replaceChildren();
+        savedPalettesList.hidden = savedPalettes.length === 0;
+        savedPalettes.forEach((palette, paletteIndex) =&gt; {
+          const button = document.createElement(&#x27;button&#x27;);
+          button.className = &#x27;btn&#x27;;
+          button.type = &#x27;button&#x27;;
+          button.setAttribute(&#x27;aria-label&#x27;, `Usa palette salvata ${paletteIndex + 1}`);
+          const swatches = document.createElement(&#x27;span&#x27;);
+          swatches.className = &#x27;saved-swatches&#x27;;
+          palette.forEach((value) =&gt; {
+            const swatch = document.createElement(&#x27;span&#x27;);
+            swatch.className = &#x27;saved-swatch&#x27;;
+            swatch.style.backgroundColor = value;
+            swatches.append(swatch);
+          });
+          button.append(swatches);
+          button.addEventListener(&#x27;click&#x27;, () =&gt; {
+            layers.forEach((layer, index) =&gt; {
+              layer.color = palette[index % palette.length];
+            });
+            rebuildLayerList();
+            scheduleRender();
+          });
+          savedPalettesList.append(button);
+        });
+      }
+
+      function savePalette() {
+        const current = layers.map((layer) =&gt; layer.color);
+        const signature = JSON.stringify(current);
+        savedPalettes = [current, ...savedPalettes.filter((palette) =&gt; JSON.stringify(palette) !== signature)].slice(0, 12);
+        persistSavedPalettes();
+        rebuildSavedPalettes();
+      }
+
+      function refreshTextureControls() {
+        const disabled = !textureToggle.checked;
+        grainInput.disabled = disabled;
+        grainControls.setAttribute(&#x27;aria-disabled&#x27;, String(disabled));
+        scheduleRender();
+      }
+
+      effectToggle.addEventListener(&#x27;change&#x27;, scheduleRender);
+      backgroundToggle.addEventListener(&#x27;change&#x27;, () =&gt; {
+        backgroundColorInput.disabled = !backgroundToggle.checked;
+        scheduleRender();
+      });
+      backgroundColorInput.addEventListener(&#x27;input&#x27;, scheduleRender);
+      textureToggle.addEventListener(&#x27;change&#x27;, refreshTextureControls);
+      grainInput.addEventListener(&#x27;input&#x27;, () =&gt; {
+        grainValue.textContent = grainInput.value;
+        scheduleRender();
+      });
+      colorInput.addEventListener(&#x27;input&#x27;, () =&gt; {
+        selectedLayer().color = colorInput.value;
+        rebuildLayerList();
+        scheduleRender();
+      });
+      blurInput.addEventListener(&#x27;input&#x27;, () =&gt; {
+        const layer = selectedLayer();
+        layer.blur = Number(blurInput.value);
+        blurValue.textContent = blurInput.value;
+        rebuildLayerList();
+        scheduleRender();
+      });
+      thresholdInput.addEventListener(&#x27;input&#x27;, () =&gt; {
+        const layer = selectedLayer();
+        layer.threshold = expansionToThreshold(Number(thresholdInput.value));
+        thresholdValue.textContent = thresholdInput.value;
+        rebuildLayerList();
+        scheduleRender();
+      });
+
+      addButton.addEventListener(&#x27;click&#x27;, () =&gt; {
+        if (layers.length &gt;= maxLayers) return;
+        const index = layers.length;
+        const layer = {
+          id: nextLayerId++,
+          color: defaultColors[index % defaultColors.length],
+          blur: 12,
+          threshold: 128
+        };
+        layers.unshift(layer);
+        selectedLayerId = layer.id;
+        rebuildLayerList();
+        scheduleRender();
+      });
+
+      duplicateButton.addEventListener(&#x27;click&#x27;, () =&gt; {
+        if (layers.length &gt;= maxLayers) return;
+        const currentIndex = layers.findIndex((layer) =&gt; layer.id === selectedLayerId);
+        const current = layers[currentIndex];
+        const duplicate = { ...current, id: nextLayerId++ };
+        layers.splice(currentIndex, 0, duplicate);
+        selectedLayerId = duplicate.id;
+        rebuildLayerList();
+        scheduleRender();
+      });
+
+      deleteButton.addEventListener(&#x27;click&#x27;, () =&gt; {
+        if (layers.length === 1) return;
+        const currentIndex = layers.findIndex((layer) =&gt; layer.id === selectedLayerId);
+        layers.splice(currentIndex, 1);
+        selectedLayerId = layers[Math.min(currentIndex, layers.length - 1)].id;
+        rebuildLayerList();
+        scheduleRender();
+      });
+
+      randomPaletteButton.addEventListener(&#x27;click&#x27;, () =&gt; {
+        const startingHue = Math.random() * 360;
+        layers.forEach((layer, index) =&gt; {
+          const hue = (startingHue + index * 137.508 + (Math.random() - 0.5) * 28 + 360) % 360;
+          layer.color = hslToHex(hue, 74 + Math.random() * 24, 43 + Math.random() * 19);
+        });
+        if (backgroundToggle.checked) {
+          const backgroundHue = (startingHue + layers.length * 137.508 + (Math.random() - 0.5) * 28 + 360) % 360;
+          backgroundColorInput.value = hslToHex(backgroundHue, 74 + Math.random() * 24, 43 + Math.random() * 19);
+        }
+        rebuildLayerList();
+        scheduleRender();
+      });
+      savePaletteButton.addEventListener(&#x27;click&#x27;, savePalette);
+
+      downloadButton.addEventListener(&#x27;click&#x27;, () =&gt; {
+        downloadButton.disabled = true;
+        downloadButton.textContent = &#x27;Preparazione PNG HD…&#x27;;
+        setTimeout(() =&gt; {
+          const exportCanvas = buildHighResolutionExport();
+          exportCanvas.toBlob((blob) =&gt; {
+            downloadButton.disabled = false;
+            downloadButton.textContent = &#x27;Scarica PNG HD&#x27;;
+            if (!blob) return;
+            const link = document.createElement(&#x27;a&#x27;);
+            const objectUrl = URL.createObjectURL(blob);
+            link.href = objectUrl;
+            link.download = `${sourceFileName}-blob-hd.png`;
+            document.body.append(link);
+            link.click();
+            link.remove();
+            setTimeout(() =&gt; URL.revokeObjectURL(objectUrl), 1000);
+          }, &#x27;image/png&#x27;);
+        }, 0);
+      });
+
+      sourceSizeInput.addEventListener(&#x27;input&#x27;, () =&gt; {
+        sourceSizePercent = Number(sourceSizeInput.value);
+        sourceSizeValue.textContent = sourceSizeInput.value;
+        scheduleSourceMask();
+      });
+
+      fileInput.addEventListener(&#x27;change&#x27;, () =&gt; {
+        const file = fileInput.files &amp;&amp; fileInput.files[0];
+        if (!file) return;
+        const objectUrl = URL.createObjectURL(file);
+        const nextImage = new Image();
+        nextImage.onload = () =&gt; {
+          if (sourceImage.src.startsWith(&#x27;blob:&#x27;)) URL.revokeObjectURL(sourceImage.src);
+          sourceImage = nextImage;
+          sourceFileName = file.name.replace(/\.[^.]+$/, &#x27;&#x27;).replace(/[^a-z0-9]+/gi, &#x27;-&#x27;).replace(/^-|-$/g, &#x27;&#x27;).toLowerCase() || &#x27;logo&#x27;;
+          prepareSourceMask();
+        };
+        nextImage.src = objectUrl;
+      });
+
+      const clientLogoSvg = `&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 322.89 212.08&quot;&gt;&lt;polygon points=&quot;73.04 113.42 78.5 100.07 58.41 91.85 36.87 156.85 117.71 135.93 99.27 59.88 138.42 50.47 135.05 36.45 45.1 58.07 48.47 72.09 85.25 63.25 100.34 125.53 58.88 136.25 67.24 111.04 73.04 113.42&quot;/&gt;&lt;polygon points=&quot;144.42 103.33 142.52 117.62 170.68 121.35 171.19 56.22 119.84 68.43 127.65 149.59 142.01 148.21 135.4 79.55 156.62 74.51 156.38 104.91 144.42 103.33&quot;/&gt;&lt;polygon points=&quot;298.63 159.11 120.73 174.78 230.86 148.28 222.03 113.72 252.85 105.85 222.62 14.42 208.93 18.95 234.31 95.7 196.63 105.31 196.63 43.65 182.21 43.65 182.21 123.87 208.05 117.28 213.27 137.68 23 183.47 25.32 197.66 299.89 173.48 298.63 159.11&quot;/&gt;&lt;/svg&gt;`;
+      sourceImage.onload = () =&gt; prepareSourceMask();
+      sourceImage.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(clientLogoSvg)}`;
+      refreshTextureControls();
+      loadSavedPalettes();
+      rebuildSavedPalettes();
+      rebuildLayerList();
+    })();
+  &lt;/script&gt;
+&lt;/div&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handleLeave = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+</body>
+</html>
