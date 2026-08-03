@@ -996,19 +996,36 @@ html&gt;body{padding:0}&lt;/style&gt;
     }
     @media (max-width: 660px) {
       #logo-layer-lab {
-        height: auto;
-        min-height: 100dvh;
-        overflow: visible;
+        height: 100dvh;
+        min-height: 0;
+        overflow: hidden;
       }
       #logo-layer-lab .lab-layout {
-        grid-template-columns: 1fr;
-        height: auto;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-height: 0;
       }
       #logo-layer-lab .lab-controls {
-        overflow: visible;
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
         width: 100%;
         height: auto;
         transform: none;
+        padding: 2px 3px max(16px, env(safe-area-inset-bottom));
+        scrollbar-gutter: stable;
+      }
+      #logo-layer-lab .canvas-card {
+        order: -1;
+        flex: 0 0 auto;
+        min-height: 0;
+        padding: 4px;
+        z-index: 3;
+      }
+      #logo-layer-lab .canvas-wrap {
+        width: min(100%, calc(34dvh * 11 / 7));
       }
       #logo-layer-lab .layer-list,
       #logo-layer-lab .palette-list {
@@ -1177,6 +1194,8 @@ html&gt;body{padding:0}&lt;/style&gt;
       let scheduledMaskFrame = null;
       let draggedLayerId = null;
       let dropInsertionIndex = null;
+      let baseMaskIntensity = new Uint8Array(canvasWidth * canvasHeight);
+      const blurIntensityCache = new Map();
       const textureNoise = new Uint8Array(canvasWidth * canvasHeight);
       let textureNoiseState = 0x9e3779b9;
       for (let index = 0; index &lt; textureNoise.length; index += 1) {
@@ -1196,6 +1215,19 @@ html&gt;body{padding:0}&lt;/style&gt;
         item.width = canvasWidth;
         item.height = canvasHeight;
       });
+      const filterTestContext = document.createElement(&#x27;canvas&#x27;).getContext(&#x27;2d&#x27;);
+      let diagnosticSearch = window.location.search;
+      try {
+        if (window.parent !== window) diagnosticSearch += `&amp;${window.parent.location.search.slice(1)}`;
+      } catch (error) {
+        // Il test opzionale resta disponibile anche quando l&#x27;iframe non può leggere la pagina esterna.
+      }
+      const forceManualBlur = new URLSearchParams(diagnosticSearch).has(&#x27;manual-blur&#x27;);
+      let canvasFilterSupported = !forceManualBlur &amp;&amp; Boolean(filterTestContext &amp;&amp; &#x27;filter&#x27; in filterTestContext);
+      if (canvasFilterSupported) {
+        filterTestContext.filter = &#x27;blur(2px)&#x27;;
+        canvasFilterSupported = filterTestContext.filter === &#x27;blur(2px)&#x27;;
+      }
 
       function selectedLayer() {
         return layers.find((layer) =&gt; layer.id === selectedLayerId) || layers[0];
@@ -1264,6 +1296,61 @@ html&gt;body{padding:0}&lt;/style&gt;
         }
       }
 
+      function gaussianBoxSizes(sigma, passes) {
+        const idealWidth = Math.sqrt((12 * sigma * sigma / passes) + 1);
+        let lowerWidth = Math.floor(idealWidth);
+        if (lowerWidth % 2 === 0) lowerWidth -= 1;
+        const upperWidth = lowerWidth + 2;
+        const idealPasses = (12 * sigma * sigma - passes * lowerWidth * lowerWidth - 4 * passes * lowerWidth - 3 * passes) / (-4 * lowerWidth - 4);
+        const lowerPasses = Math.round(idealPasses);
+        return Array.from({ length: passes }, (_, index) =&gt; index &lt; lowerPasses ? lowerWidth : upperWidth);
+      }
+
+      function boxBlurGray(source, width, height, radius) {
+        if (radius &lt;= 0) return source.slice();
+        const temporary = new Uint8Array(source.length);
+        const result = new Uint8Array(source.length);
+        const windowSize = radius * 2 + 1;
+
+        for (let y = 0; y &lt; height; y += 1) {
+          const row = y * width;
+          let sum = 0;
+          for (let offset = -radius; offset &lt;= radius; offset += 1) {
+            sum += source[row + Math.max(0, Math.min(width - 1, offset))];
+          }
+          for (let x = 0; x &lt; width; x += 1) {
+            temporary[row + x] = Math.round(sum / windowSize);
+            const removeX = Math.max(0, x - radius);
+            const addX = Math.min(width - 1, x + radius + 1);
+            sum += source[row + addX] - source[row + removeX];
+          }
+        }
+
+        for (let x = 0; x &lt; width; x += 1) {
+          let sum = 0;
+          for (let offset = -radius; offset &lt;= radius; offset += 1) {
+            const sourceY = Math.max(0, Math.min(height - 1, offset));
+            sum += temporary[sourceY * width + x];
+          }
+          for (let y = 0; y &lt; height; y += 1) {
+            result[y * width + x] = Math.round(sum / windowSize);
+            const removeY = Math.max(0, y - radius);
+            const addY = Math.min(height - 1, y + radius + 1);
+            sum += temporary[addY * width + x] - temporary[removeY * width + x];
+          }
+        }
+        return result;
+      }
+
+      function manualGaussianBlur(source, width, height, amount) {
+        if (amount &lt;= 0) return source.slice();
+        let result = source.slice();
+        gaussianBoxSizes(amount, 3).forEach((size) =&gt; {
+          result = boxBlurGray(result, width, height, Math.max(0, (size - 1) / 2));
+        });
+        return result;
+      }
+
       function hslToHex(hue, saturation, lightness) {
         const s = saturation / 100;
         const l = lightness / 100;
@@ -1319,33 +1406,41 @@ html&gt;body{padding:0}&lt;/style&gt;
         }
         const useAlpha = transparentCount &gt; canvasWidth * canvasHeight * 0.01;
         const maskPixels = mask.createImageData(canvasWidth, canvasHeight);
-        for (let index = 0; index &lt; sourcePixels.data.length; index += 4) {
+        baseMaskIntensity = new Uint8Array(canvasWidth * canvasHeight);
+        for (let index = 0, pixel = 0; index &lt; sourcePixels.data.length; index += 4, pixel += 1) {
           const alpha = sourcePixels.data[index + 3];
           const luminance = sourcePixels.data[index] * 0.2126 + sourcePixels.data[index + 1] * 0.7152 + sourcePixels.data[index + 2] * 0.0722;
           const value = useAlpha ? alpha : Math.round((255 - luminance) * (alpha / 255));
+          baseMaskIntensity[pixel] = value;
           maskPixels.data[index] = value;
           maskPixels.data[index + 1] = value;
           maskPixels.data[index + 2] = value;
           maskPixels.data[index + 3] = 255;
         }
         mask.putImageData(maskPixels, 0, 0);
+        blurIntensityCache.clear();
         sourceMaskReady = true;
         scheduleRender();
       }
 
-      function intensityForBlur(amount, cache) {
-        if (cache.has(amount)) return cache.get(amount);
-        blurred.clearRect(0, 0, canvasWidth, canvasHeight);
-        blurred.save();
-        blurred.filter = `blur(${amount}px)`;
-        blurred.drawImage(maskCanvas, 0, 0);
-        blurred.restore();
-        const image = blurred.getImageData(0, 0, canvasWidth, canvasHeight).data;
-        const intensity = new Uint8Array(canvasWidth * canvasHeight);
-        for (let pixel = 0, sourceIndex = 0; pixel &lt; intensity.length; pixel += 1, sourceIndex += 4) {
-          intensity[pixel] = image[sourceIndex];
+      function intensityForBlur(amount) {
+        if (blurIntensityCache.has(amount)) return blurIntensityCache.get(amount);
+        let intensity;
+        if (canvasFilterSupported) {
+          blurred.clearRect(0, 0, canvasWidth, canvasHeight);
+          blurred.save();
+          blurred.filter = `blur(${amount}px)`;
+          blurred.drawImage(maskCanvas, 0, 0);
+          blurred.restore();
+          const image = blurred.getImageData(0, 0, canvasWidth, canvasHeight).data;
+          intensity = new Uint8Array(canvasWidth * canvasHeight);
+          for (let pixel = 0, sourceIndex = 0; pixel &lt; intensity.length; pixel += 1, sourceIndex += 4) {
+            intensity[pixel] = image[sourceIndex];
+          }
+        } else {
+          intensity = manualGaussianBlur(baseMaskIntensity, canvasWidth, canvasHeight, amount);
         }
-        cache.set(amount, intensity);
+        blurIntensityCache.set(amount, intensity);
         return intensity;
       }
 
@@ -1368,10 +1463,9 @@ html&gt;body{padding:0}&lt;/style&gt;
           }
         }
 
-        const cache = new Map();
         for (let layerIndex = layers.length - 1; layerIndex &gt;= 0; layerIndex -= 1) {
           const layer = layers[layerIndex];
-          const intensity = intensityForBlur(layer.blur, cache);
+          const intensity = intensityForBlur(layer.blur);
           const rgb = hexToRgb(layer.color);
           for (let pixel = 0, dataIndex = 0; pixel &lt; intensity.length; pixel += 1, dataIndex += 4) {
             if (intensity[pixel] &lt; layer.threshold) continue;
@@ -1419,10 +1513,12 @@ html&gt;body{padding:0}&lt;/style&gt;
         exportMaskCanvas.height = height;
         const exportMask = exportMaskCanvas.getContext(&#x27;2d&#x27;, { willReadFrequently: true });
         let maskPixels = exportMask.createImageData(width, height);
-        for (let index = 0; index &lt; sourcePixels.data.length; index += 4) {
+        const exportBaseIntensity = new Uint8Array(width * height);
+        for (let index = 0, pixel = 0; index &lt; sourcePixels.data.length; index += 4, pixel += 1) {
           const alpha = sourcePixels.data[index + 3];
           const luminance = sourcePixels.data[index] * 0.2126 + sourcePixels.data[index + 1] * 0.7152 + sourcePixels.data[index + 2] * 0.0722;
           const value = useAlpha ? alpha : Math.round((255 - luminance) * (alpha / 255));
+          exportBaseIntensity[pixel] = value;
           maskPixels.data[index] = value;
           maskPixels.data[index + 1] = value;
           maskPixels.data[index + 2] = value;
@@ -1456,15 +1552,24 @@ html&gt;body{padding:0}&lt;/style&gt;
         const exportBlur = exportBlurCanvas.getContext(&#x27;2d&#x27;, { willReadFrequently: true });
         for (let layerIndex = layers.length - 1; layerIndex &gt;= 0; layerIndex -= 1) {
           const layer = layers[layerIndex];
-          exportBlur.clearRect(0, 0, width, height);
-          exportBlur.save();
-          exportBlur.filter = `blur(${layer.blur * exportScale}px)`;
-          exportBlur.drawImage(exportMaskCanvas, 0, 0);
-          exportBlur.restore();
-          const intensity = exportBlur.getImageData(0, 0, width, height).data;
+          let intensity;
+          if (canvasFilterSupported) {
+            exportBlur.clearRect(0, 0, width, height);
+            exportBlur.save();
+            exportBlur.filter = `blur(${layer.blur * exportScale}px)`;
+            exportBlur.drawImage(exportMaskCanvas, 0, 0);
+            exportBlur.restore();
+            const rgbaIntensity = exportBlur.getImageData(0, 0, width, height).data;
+            intensity = new Uint8Array(width * height);
+            for (let pixel = 0, sourceIndex = 0; pixel &lt; intensity.length; pixel += 1, sourceIndex += 4) {
+              intensity[pixel] = rgbaIntensity[sourceIndex];
+            }
+          } else {
+            intensity = manualGaussianBlur(exportBaseIntensity, width, height, layer.blur * exportScale);
+          }
           const rgb = hexToRgb(layer.color);
-          for (let pixel = 0, sourceIndex = 0, dataIndex = 0; sourceIndex &lt; intensity.length; pixel += 1, sourceIndex += 4, dataIndex += 4) {
-            if (intensity[sourceIndex] &lt; layer.threshold) continue;
+          for (let pixel = 0, dataIndex = 0; pixel &lt; intensity.length; pixel += 1, dataIndex += 4) {
+            if (intensity[pixel] &lt; layer.threshold) continue;
             result.data[dataIndex] = rgb[0];
             result.data[dataIndex + 1] = rgb[1];
             result.data[dataIndex + 2] = rgb[2];

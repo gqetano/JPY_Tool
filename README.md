@@ -2,7 +2,7 @@
 
 Tool statico pronto per GitHub Pages. Non richiede installazione, build o server.
 
-Su desktop l'interfaccia occupa l'intera viewport senza scorrimento della pagina: tutti i controlli, incluso **Scarica PNG HD**, sono raccolti nella colonna a sinistra e il canvas occupa lo spazio restante. Il selettore del file viene mostrato direttamente senza la dicitura visibile “Immagine”. Gli elenchi che possono crescere oltre lo spazio disponibile mantengono uno scorrimento interno. Su schermi stretti il layout torna a disporsi verticalmente.
+Su desktop l'interfaccia occupa l'intera viewport senza scorrimento della pagina: tutti i controlli, incluso **Scarica PNG HD**, sono raccolti nella colonna a sinistra e il canvas occupa lo spazio restante. Il selettore del file viene mostrato direttamente senza la dicitura visibile “Immagine”. Gli elenchi che possono crescere oltre lo spazio disponibile mantengono uno scorrimento interno. Su mobile il canvas resta fisso nella parte superiore, mentre la colonna dei controlli scorre indipendentemente sotto l'anteprima.
 
 Questa variante aggiunge una grana procedurale stabile. La sezione **Grana** contiene direttamente lo slider, inizialmente impostato su `10`, e lo switch per accendere o spegnere l'effetto. La grana viene ricalcolata anche nel PNG HD.
 
@@ -19,6 +19,8 @@ Lo switch **Effetto globale** alterna tra la composizione elaborata e il logo or
 5. Seleziona il branch `main`, la cartella `/(root)` e salva.
 
 Il tool elabora le immagini localmente nel browser: il logo caricato non viene inviato a un server.
+
+La sfocatura include un sistema di compatibilità automatico per Safari e iOS meno recenti: se il browser non supporta il filtro nativo del canvas, il tool usa una sfocatura software equivalente. Il fallback viene applicato sia all'anteprima sia al PNG HD.
 
 Ogni livello dispone di colore, **Morbidezza** ed **Espansione** indipendenti. Seleziona un livello per modificarlo, usa **Aggiungi livello** o **Duplica** e trascina qualsiasi punto della sua riga per riordinarlo. Durante lo spostamento compaiono un'anteprima semitrasparente e una linea che indica la nuova posizione. Lo slider **Espansione** cresce in modo intuitivo verso destra e copre l'intervallo completo da `1` a `255`.
 
